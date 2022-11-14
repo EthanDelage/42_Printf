@@ -6,7 +6,7 @@
 #    By: edelage <edelage@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/19 23:25:09 by edelage           #+#    #+#              #
-#    Updated: 2022/11/14 16:17:46 by edelage          ###   ########lyon.fr    #
+#    Updated: 2022/11/14 19:25:06 by edelage          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,22 +60,20 @@ RM =				rm -rf
 
 MKDIR =				mkdir -p
 
-MAKE =				make
-
 # ***************************
 #  Rules
 # ***************************
 
-all:				$(NAME)
+all:				_libft $(NAME)
 
-$(NAME):			$(LIBFT) $(OBJ_DIR) $(OBJS) $(HEADER)
+$(NAME):			$(OBJ_DIR) $(OBJS) $(HEADER)
 					cp $(LIBFT) $@
 					$(AR) $(AR_FLAGS) $@ $(OBJS)
 
-$(LIBFT):
+_libft:
 					$(MAKE) -C $(LIBFT_DIR)
 
-$(OBJ_DIR)%.o:		%.c $(HEADER)
+$(OBJ_DIR)%.o:		%.c $(HEADER) $(LIBFT) Makefile
 					$(CC) $(FLAGS) -I$(INC_DIR) -c $< -o $@
 
 $(OBJ_DIR):
@@ -87,9 +85,9 @@ clean:
 
 fclean:
 					$(MAKE) fclean -C $(LIBFT_DIR)
-					$(RM) $(OBJ_DIR)
+					$(RM) $(OBJS)
 					$(RM) $(NAME)
 
 re:					fclean all
 
-.PHONY:			all clean fclean re
+.PHONY:			all clean fclean re _libft
