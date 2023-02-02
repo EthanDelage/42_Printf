@@ -57,6 +57,7 @@ int		ft_printf(const char *format, ...);
 
 /* --------------- LEXER FUNCTIONS --------------- */
 
+t_param	*lexer(const char *format);
 int		lexer_conversion(const char *format,
 			t_param **token_stack, size_t *index);
 
