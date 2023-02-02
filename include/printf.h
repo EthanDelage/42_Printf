@@ -15,7 +15,61 @@
 # include <stdarg.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <errno.h>
+# include <stdbool.h>
 
-int	ft_printf(const char *format, ...);
+enum
+{
+	SUCCESS	=	0,
+	FAILURE	=	1,
+};
+
+typedef enum e_type
+{
+	FORMAT,
+	CHAR,
+	STRING,
+	POINTER,
+	INTEGER,
+	UNSIGNED,
+	HEXA_LOWER,
+	HEXA_UPPER,
+	PERCENT,
+	UNDEFINED,
+}	t_type;
+
+typedef struct s_param
+{
+	t_type			type;
+	char			*value;
+	bool			hashtag;
+	bool			zero;
+	bool			left_align;
+	bool			space;
+	bool			plus;
+	int				width;
+	bool			precision;
+	int				length;
+	struct s_param	*next;
+}	t_param;
+
+int		ft_printf(const char *format, ...);
+
+/* --------------- LEXER FUNCTIONS --------------- */
+
+int		lexer_conversion(const char *format,
+			t_param **token_stack, size_t *index);
+
+/* --------------- TOKEN FUNCTIONS --------------- */
+
+t_param	*token_new(void);
+void	token_add_front(t_param **head, t_param *token);
+void	token_reverse_stack(t_param **head);
+void	token_clear(t_param *head);
+
+/* --------------- UTILS FUNCTIONS --------------- */
+
+int		ft_atoi(const char *str, size_t *index);
+void	*ft_memcpy(void *dest, const void *src, size_t n);
 
 #endif

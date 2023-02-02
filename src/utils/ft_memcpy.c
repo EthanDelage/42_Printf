@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.c                                           :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ethan <ethan@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/02 00:35:00 by ethan             #+#    #+#             */
-/*   Updated: 2023/02/02 00:35:00 by ethan            ###   ########lyon.fr   */
+/*   Created: 2023/02/02 01:54:00 by ethan             #+#    #+#             */
+/*   Updated: 2023/02/02 01:54:00 by ethan            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
-#include "printf.h"
+#include <sys/types.h>
 
-int	printf(const char *format, ...)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	int		count;
-	va_list	ap;
+	size_t	index;
 
-	va_start(ap, format);
-	count = 0;
-	va_end(ap);
-	return (count);
+	index = 0;
+	while (index < n)
+	{
+		((char *) dest)[index] = ((char *) src)[index];
+		index++;
+	}
+	return (dest);
 }
