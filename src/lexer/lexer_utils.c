@@ -20,6 +20,7 @@ t_param	*token_new(void)
 	new_token = (t_param *) malloc(sizeof(t_param));
 	if (errno)
 		return (NULL);
+	new_token->value = NULL;
 	new_token->hashtag = false;
 	new_token->zero = false;
 	new_token->left_align = false;
@@ -67,5 +68,7 @@ static	t_param	*token_free(t_param *token)
 
 	next = token->next;
 	free(token);
+	if (token->value)
+		free(token->value);
 	return (next);
 }
