@@ -15,11 +15,19 @@ BUILD_DIR	=		.build/
 #######################
 
 SRCS		=		printf.c \
+					utils/ft_atoi.c \
+					utils/ft_memcpy.c \
+					utils/ft_strdup.c \
 					lexer/lexer.c \
 					lexer/lexer_conversion.c \
 					lexer/lexer_utils.c \
-					utils/ft_atoi.c \
-					utils/ft_memcpy.c \
+					parser/parser.c \
+					parser/conversion/conversion_char.c \
+					parser/conversion/conversion_string.c \
+					parser/conversion/conversion_pointer.c \
+					parser/conversion/conversion_int.c \
+					parser/conversion/conversion_unsigned.c \
+					parser/conversion/conversion_hexa.c \
 
 OBJS		=		$(addprefix $(BUILD_DIR), $(SRCS:.c=.o))
 

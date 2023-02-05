@@ -55,6 +55,10 @@ typedef struct s_param
 
 int		ft_printf(const char *format, ...);
 
+/* --------------- CONVERSION FUNCTIONS --------------- */
+
+int 	conversion_char(t_param *token, unsigned char c);
+
 /* --------------- LEXER FUNCTIONS --------------- */
 
 t_param	*lexer(const char *format);
@@ -70,6 +74,8 @@ void	token_clear(t_param *head);
 
 /* --------------- UTILS FUNCTIONS --------------- */
 
+int 	is_no_flags(t_param *token);
+char    *ft_strdup(const char *str);
 int		ft_atoi(const char *str, size_t *index);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 
