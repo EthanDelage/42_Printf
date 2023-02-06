@@ -1,6 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   conversion_string.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: edelage <edelage@student.42lyon.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/06 01:02:38 by edelage           #+#    #+#             */
+/*   Updated: 2023/02/06 01:02:40 by edelage          ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
 #include "printf.h"
 
-int conversion_string(t_param *token, char *str)
+int	conversion_string(t_param *token, char *str)
 {
 
 }

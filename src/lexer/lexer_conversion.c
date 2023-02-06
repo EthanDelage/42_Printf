@@ -13,7 +13,8 @@
 
 static int		is_flag(char c);
 static void		flag_change_state(t_param *param, char flag);
-static int		lexer_precision(const char *format, size_t *index, t_param *param);
+static int		lexer_precision(const char *format, size_t *index,
+					t_param *param);
 static t_type	lexer_get_type(char c, t_param *param);
 
 int	lexer_conversion(const char *format, t_param **token_stack, size_t *index)
