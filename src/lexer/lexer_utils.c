@@ -28,6 +28,7 @@ t_param	*token_new(void)
 	new_token->plus = false;
 	new_token->precision = false;
 	new_token->next = NULL;
+	new_token->width = -1;
 	return (new_token);
 }
 
@@ -67,8 +68,8 @@ static	t_param	*token_free(t_param *token)
 	t_param	*next;
 
 	next = token->next;
-	free(token);
 	if (token->value)
 		free(token->value);
+	free(token);
 	return (next);
 }

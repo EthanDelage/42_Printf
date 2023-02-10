@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   conversion_char.c                                  :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edelage <edelage@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: ethan <ethan@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/06 01:01:49 by edelage           #+#    #+#             */
-/*   Updated: 2023/02/06 01:01:51 by edelage          ###   ########lyon.fr   */
+/*   Created: 2023/02/10 03:43:00 by ethan             #+#    #+#             */
+/*   Updated: 2023/02/10 03:43:00 by ethan            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
-#include "printf.h"
+#include <sys/types.h>
 
-int	conversion_char(t_param *token, unsigned char c)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	token->value = (char *) malloc(sizeof(char));
-	if (errno)
+	char	*ptr;
+	size_t	index;
+
+	index = 0;
+	ptr = (char *) s;
+	while (index < n)
 	{
-		token->value = NULL;
-		return (FAILURE);
+		ptr[index] = c;
+		index++;
 	}
-	token->value[0] = c;
-	token->len_value = 1;
-	return (SUCCESS);
+	return (s);
 }

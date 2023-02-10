@@ -18,6 +18,8 @@
 # include <errno.h>
 # include <stdbool.h>
 
+# define SIZE_NULL_STR	6	/* "(null)" */
+
 enum
 {
 	SUCCESS	=	0,
@@ -42,6 +44,7 @@ typedef struct s_param
 {
 	t_type			type;
 	char			*value;
+	int				len_value;
 	bool			hashtag;
 	bool			zero;
 	bool			left_align;
@@ -55,15 +58,24 @@ typedef struct s_param
 
 int		ft_printf(const char *format, ...);
 
-/* --------------- CONVERSION FUNCTIONS --------------- */
-
-int		conversion_char(t_param *token, unsigned char c);
-
 /* --------------- LEXER FUNCTIONS --------------- */
 
 t_param	*lexer(const char *format);
 int		lexer_conversion(const char *format,
 			t_param **token_stack, size_t *index);
+
+/* --------------- PARSER FUNCTION --------------- */
+
+int		parser(t_param *token_stack, va_list ap);
+
+/* --------------- CONVERSION FUNCTIONS --------------- */
+
+int		conversion_char(t_param *token, unsigned char c);
+int		conversion_string(t_param *token, char *str);
+
+/* --------------- EXEC FUNCTIONS --------------- */
+
+int	exec_write(t_param *head, int fd);
 
 /* --------------- TOKEN FUNCTIONS --------------- */
 
@@ -74,8 +86,10 @@ void	token_clear(t_param *head);
 
 /* --------------- UTILS FUNCTIONS --------------- */
 
+int		ft_isdigit(char c);
 int		is_no_flags(t_param *token);
 char	*ft_strdup(const char *str);
+void	*ft_memset(void *s, int c, size_t n);
 int		ft_atoi(const char *str, size_t *index);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 

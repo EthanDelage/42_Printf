@@ -6,7 +6,7 @@ NAME		=		libftprintf.a
 
 SRC_DIR		=		src/
 
-INC_DIR		=		include/
+INC_DIR		=		inc/
 
 BUILD_DIR	=		.build/
 
@@ -17,6 +17,7 @@ BUILD_DIR	=		.build/
 SRCS		=		printf.c \
 					utils/ft_atoi.c \
 					utils/ft_memcpy.c \
+					utils/ft_memset.c \
 					utils/ft_strdup.c \
 					lexer/lexer.c \
 					lexer/lexer_conversion.c \
@@ -28,6 +29,7 @@ SRCS		=		printf.c \
 					parser/conversion/conversion_int.c \
 					parser/conversion/conversion_unsigned.c \
 					parser/conversion/conversion_hexa.c \
+					exec/exec.c
 
 OBJS		=		$(addprefix $(BUILD_DIR), $(SRCS:.c=.o))
 

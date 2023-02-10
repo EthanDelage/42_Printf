@@ -12,7 +12,10 @@
 #include <sys/types.h>
 #include <errno.h>
 
-static int	ft_isdigit(char c);
+int	ft_isdigit(char c)
+{
+	return (c >= '0' && c <= '9');
+}
 
 int	ft_atoi(const char *str, size_t *index)
 {
@@ -30,9 +33,4 @@ int	ft_atoi(const char *str, size_t *index)
 		(*index)++;
 	}
 	return (result);
-}
-
-static int	ft_isdigit(char c)
-{
-	return (c >= '0' && c <= '9');
 }

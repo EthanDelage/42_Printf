@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   conversion_char.c                                  :+:      :+:    :+:   */
+/*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edelage <edelage@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: ethan <ethan@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/06 01:01:49 by edelage           #+#    #+#             */
-/*   Updated: 2023/02/06 01:01:51 by edelage          ###   ########lyon.fr   */
+/*   Created: 2023/02/10 04:02:00 by ethan             #+#    #+#             */
+/*   Updated: 2023/02/10 04:02:00 by ethan            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 #include "printf.h"
 
-int	conversion_char(t_param *token, unsigned char c)
+int	exec_write(t_param *head, int fd)
 {
-	token->value = (char *) malloc(sizeof(char));
-	if (errno)
+	int	count;
+
+	count = 0;
+	while (head)
 	{
-		token->value = NULL;
-		return (FAILURE);
+		if (write(fd, head->value, head->len_value) == -1)
+			return (-1);
+		count += head->len_value;
+		head = head->next;
 	}
-	token->value[0] = c;
-	token->len_value = 1;
-	return (SUCCESS);
+	return (count);
 }

@@ -33,7 +33,8 @@ int	lexer_conversion(const char *format, t_param **token_stack, size_t *index)
 		flag_change_state(param, format[*index]);
 		(*index)++;
 	}
-	param->width = ft_atoi(format, index);
+	if (ft_isdigit(format[*index]))
+		param->width = ft_atoi(format, index);
 	if (lexer_precision(format, index, param) == FAILURE
 		|| lexer_get_type(format[*index], param) == UNDEFINED)
 	{

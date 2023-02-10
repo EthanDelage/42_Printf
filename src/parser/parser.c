@@ -46,16 +46,16 @@ static int	conversion_router(t_param *head, va_list ap)
 		return_value = conversion_char(head, (unsigned char) va_arg(ap, int));
 	else if (head->type == STRING)
 		return_value = conversion_string(head, (char *) va_arg(ap, char *));
-	else if (head->type == POINTER)
-		return_value = conversion_pointer(head, va_arg(ap, size_t));
-	else if (head->type == INTEGER)
-		return_value = conversion_int(head, va_arg(ap, int));
-	else if (head->type == UNSIGNED)
-		return_value = conversion_unsigned(head, va_arg(ap, unsigned int));
-	else if (head->type == HEXA_LOWER)
-		return_value = conversion_hexa_low(head, va_arg(ap, unsigned int));
-	else if (head->type == HEXA_UPPER)
-		return_value = conversion_hexa_up(head, va_arg(ap, unsigned int));
+//	else if (head->type == POINTER)
+//		return_value = conversion_pointer(head, va_arg(ap, size_t));
+//	else if (head->type == INTEGER)
+//		return_value = conversion_int(head, va_arg(ap, int));
+//	else if (head->type == UNSIGNED)
+//		return_value = conversion_unsigned(head, va_arg(ap, unsigned int));
+//	else if (head->type == HEXA_LOWER)
+//		return_value = conversion_hexa_low(head, va_arg(ap, unsigned int));
+//	else if (head->type == HEXA_UPPER)
+//		return_value = conversion_hexa_up(head, va_arg(ap, unsigned int));
 	return (return_value);
 }
 
